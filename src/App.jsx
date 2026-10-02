@@ -4,16 +4,16 @@ const Header = (props) => {
 
 const Part = (props) => {
   return (
-    <p>{props.part} {props.units}</p>
+    <p>{props.part.name} {props.part.units}</p>
   )
 }
 
 const Content = (props) => {
   return (
     <div>
-      <Part part={props.part1} units={props.units1} />
-      <Part part={props.part2} units={props.units2} />
-      <Part part={props.part3} units={props.units3} />
+      <Part part={props.part1} />
+      <Part part={props.part2} />
+      <Part part={props.part3} />
     </div>
   )
 }
@@ -33,12 +33,18 @@ const Footer = (props) => {
 
 const App = () => {
   const course = 'Bachelor of Science in Information Technology'
-  const part1 = 'CSIT340 - Industry Elective'
-  const units1 = 3
-  const part2 = 'CSIT321 - Applications Development and Emerging Technology'
-  const units2 = 3
-  const part3 = 'CSIT327 – Information Management'
-  const units3 = 3
+  const part1 = {
+    name: 'CSIT340 - Industry Elective',
+    units: 3
+  }
+  const part2 = {
+    name: 'CSIT321 - Applications Development and Emerging Technology',
+    units: 3
+  }
+  const part3 = {
+    name: 'CSIT327 – Information Management',
+    units: 3
+  }
 
   const studentInfo = {
     fullName: 'Mary Grace Maquiling',
@@ -49,12 +55,8 @@ const App = () => {
   return (
     <div>
       <Header course={course} />
-      <Content 
-        part1={part1} units1={units1}
-        part2={part2} units2={units2}
-        part3={part3} units3={units3}
-      />
-      <Total total={units1 + units2 + units3} />
+      <Content part1={part1} part2={part2} part3={part3} />
+      <Total total={part1.units + part2.units + part3.units} />
       <Footer 
         fullName={studentInfo.fullName} 
         courseCode={studentInfo.courseCode} 
